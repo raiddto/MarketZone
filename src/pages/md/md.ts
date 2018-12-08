@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { snapshotToArray } from '../../app/environment';
 import { AlertController } from 'ionic-angular';
+import { AddMdPage } from '../add-md/add-md';
 
 /**
  * Generated class for the MdPage page.
@@ -18,33 +19,28 @@ import { AlertController } from 'ionic-angular';
 })
 export class MdPage {
 
-  items;
-  ref = firebase.database().ref('items/');
+  mds;
+  ref = firebase.database().ref('mds/');
   inputName:string = '';
-  inputJob:string = '';
+  inputSpecialty:string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
     this.ref.on('value', resp => {
-      this.items = snapshotToArray(resp);
+      this.mds = snapshotToArray(resp);
     });
   }
 
-  addItem(item) {
-    if (item !== undefined && item !== null) {
-      let newItem = this.ref.push();
-      newItem.set(item);
-      this.inputName = '';
-      this.inputJob = '';
-    }
+  add() {
+    this.navCtrl.push(AddMdPage);
   }
 
-  async delItem(key) {
+  async delete(key) {
     let alert = this.alertCtrl.create({
       buttons: [
         {
           text: 'Delete',
           handler: data => {
-            firebase.database().ref('items/'+key).remove();
+            firebase.database().ref('mds/'+key).remove();
           }
         }, {
           text: 'Cancel',
@@ -55,17 +51,17 @@ export class MdPage {
     alert.present();
   }
 
-  editItem(key) {
+  edit(key) {
     let alert = this.alertCtrl.create({
-      title: 'Edit item',
+      title: 'Edit',
       inputs: [
         {
           name: 'name',
           placeholder: 'Name'
         },
         {
-          name: 'job',
-          placeholder: 'Job'
+          name: 'specialty',
+          placeholder: 'Specialty'
         }
       ],
       buttons: [
@@ -73,7 +69,7 @@ export class MdPage {
           text: 'Edit',
           handler: data => {
             if (data.name !== undefined && data.name.length > 0) {
-              firebase.database().ref('items/'+key).update({name:data.name, job:data.job});
+              firebase.database().ref('mds/'+key).update({name:data.name, specialty:data.specialty});
             }
           }
         }, {

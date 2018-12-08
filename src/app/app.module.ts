@@ -11,10 +11,16 @@ import { FIREBASE_CONFIG } from './environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 // npm install --save ionic-long-press
 import { LongPressModule } from 'ionic-long-press';
+import { AddMdPage } from '../pages/add-md/add-md';
+import { AddDrugstorePage } from '../pages/add-drugstore/add-drugstore';
+import { AddFeedbacksPage } from '../pages/add-feedbacks/add-feedbacks';
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+    AddMdPage,
+    AddDrugstorePage,
+    AddFeedbacksPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,10 @@ import { LongPressModule } from 'ionic-long-press';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    AddMdPage,
+    AddDrugstorePage,
+    AddFeedbacksPage
   ],
   providers: [
     StatusBar,

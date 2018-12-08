@@ -1,11 +1,11 @@
 export const FIREBASE_CONFIG = {
-    apiKey: "AIzaSyA1EJ1mkrYVJy9WkQU9ik1hXMzzFACBy8w",
-    authDomain: "fir-crud-df12a.firebaseapp.com",
-    databaseURL: "https://fir-crud-df12a.firebaseio.com",
-    projectId: "fir-crud-df12a",
-    storageBucket: "fir-crud-df12a.appspot.com",
-    messagingSenderId: "298106228484"
-  };
+  apiKey: "AIzaSyCyVTClW9I9PsrGQ7B9RfgL2QyUUQ779Cc",
+  authDomain: "marketzone-422a4.firebaseapp.com",
+  databaseURL: "https://marketzone-422a4.firebaseio.com",
+  projectId: "marketzone-422a4",
+  storageBucket: "marketzone-422a4.appspot.com",
+  messagingSenderId: "227372913105"
+};
 
 export const snapshotToArray = snapshot => {
   let returnArray = [];
