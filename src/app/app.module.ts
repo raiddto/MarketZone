@@ -13,6 +13,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { LongPressModule } from 'ionic-long-press';
 import { AddMdPage } from '../pages/add-md/add-md';
 import { AddDrugstorePage } from '../pages/add-drugstore/add-drugstore';
+import { AddAccountsPage } from '../pages/add-accounts/add-accounts';
 import { AddFeedbacksPage } from '../pages/add-feedbacks/add-feedbacks';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AddFeedbacksPage } from '../pages/add-feedbacks/add-feedbacks';
     MyApp,
     AddMdPage,
     AddDrugstorePage,
-    AddFeedbacksPage
+    AddFeedbacksPage,
+    AddAccountsPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { AddFeedbacksPage } from '../pages/add-feedbacks/add-feedbacks';
     MyApp,
     AddMdPage,
     AddDrugstorePage,
-    AddFeedbacksPage
+    AddFeedbacksPage,
+    AddAccountsPage
   ],
   providers: [
     StatusBar,

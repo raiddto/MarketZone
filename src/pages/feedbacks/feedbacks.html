@@ -6,13 +6,40 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>FeedbacksPage</ion-title>
-  </ion-navbar>
+  <ion-navbar color="primary">
+      <ion-title>Highlights and Feedbacks</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="add()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
-</ion-content>
+    <ion-list>
+      <ion-grid>
+        <ion-item-sliding *ngFor="let fb of fbs">
+          <ion-item text-wrap>
+            <ion-row>
+              <ion-col>
+                {{fb.feedbacks}}
+              </ion-col>
+            </ion-row>
+          </ion-item>
+          <ion-item-options side="right">
+            <button ion-button icon-only (click)="edit(fb.key)">
+              <ion-icon name="settings"></ion-icon>
+            </button>
+          </ion-item-options>
+          <ion-item-options side="left">
+            <button ion-button icon-only color="danger" (click)="delete(fb.key)">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-grid>
+    </ion-list>
+  </ion-content>

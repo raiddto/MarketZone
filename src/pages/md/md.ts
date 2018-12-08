@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { snapshotToArray } from '../../app/environment';
-import { AlertController } from 'ionic-angular';
 import { AddMdPage } from '../add-md/add-md';
 
 /**
@@ -21,8 +20,6 @@ export class MdPage {
 
   mds;
   ref = firebase.database().ref('mds/');
-  inputName:string = '';
-  inputSpecialty:string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
     this.ref.on('value', resp => {
@@ -36,14 +33,15 @@ export class MdPage {
 
   async delete(key) {
     let alert = this.alertCtrl.create({
+      title: 'Are you sure?',
       buttons: [
         {
-          text: 'Delete',
+          text: 'Yes',
           handler: data => {
             firebase.database().ref('mds/'+key).remove();
           }
         }, {
-          text: 'Cancel',
+          text: 'No',
           role: 'cancel'
         }
       ]
@@ -66,7 +64,7 @@ export class MdPage {
       ],
       buttons: [
         {
-          text: 'Edit',
+          text: 'Save',
           handler: data => {
             if (data.name !== undefined && data.name.length > 0) {
               firebase.database().ref('mds/'+key).update({name:data.name, specialty:data.specialty});
@@ -79,6 +77,10 @@ export class MdPage {
       ]
     });
     alert.present();
+  }
+
+  sign(key) {
+    this.navCtrl.push('SignPage');
   }
 
 }

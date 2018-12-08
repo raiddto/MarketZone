@@ -8,11 +8,41 @@
 
   <ion-navbar color="primary">
     <ion-title>New Accounts</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="add()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
-</ion-content>
+    <ion-list>
+      <ion-grid>
+        <ion-item-sliding *ngFor="let ac of acs">
+          <ion-item text-wrap>
+            <ion-row>
+              <ion-col>
+                {{ac.name}}
+              </ion-col>
+              <ion-col>
+                {{ac.dose}}
+              </ion-col>
+            </ion-row>
+          </ion-item>
+          <ion-item-options side="right">
+            <button ion-button icon-only (click)="edit(ac.key)">
+              <ion-icon name="settings"></ion-icon>
+            </button>
+          </ion-item-options>
+          <ion-item-options side="left">
+            <button ion-button icon-only color="danger" (click)="delete(ac.key)">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-grid>
+    </ion-list>
+  </ion-content>

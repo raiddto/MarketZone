@@ -8,11 +8,44 @@
 
   <ion-navbar color="primary">
     <ion-title>Drugstore / Pharmacy Calls</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="add()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-grid>
+      <ion-item-sliding *ngFor="let ds of dss">
+        <ion-item text-wrap>
+          <ion-row>
+            <ion-col>
+              {{ds.name}}
+            </ion-col>
+            <ion-col>
+              {{ds.product}}
+            </ion-col>
+            <ion-col>
+              {{ds.remarks}}
+            </ion-col>
+          </ion-row>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button icon-only (click)="edit(ds.key)">
+            <ion-icon name="settings"></ion-icon>
+          </button>
+        </ion-item-options>
+        <ion-item-options side="left">
+          <button ion-button icon-only color="danger" (click)="delete(ds.key)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-grid>
+  </ion-list>
 </ion-content>

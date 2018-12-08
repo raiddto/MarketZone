@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import * as firebase from 'firebase';
 
 /**
  * Generated class for the AddDrugstorePage page.
@@ -15,11 +16,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AddDrugstorePage {
 
+  ref = firebase.database().ref('dss/');
+  inputName:string = '';
+  inputProduct:string = '';
+  inputRemarks:string = '';
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddDrugstorePage');
+  add(ds) {
+    if (ds !== undefined && ds !== null) {
+      let newDrugstore = this.ref.push();
+      newDrugstore.set(ds);
+      this.inputName = '';
+      this.inputProduct = '';
+      this.inputRemarks = '';
+    }
+    this.navCtrl.pop();
   }
 
 }

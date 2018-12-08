@@ -6,13 +6,25 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>addDrugstorePage</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Add Drugstore / Pharmacy Calls</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label floating>Name</ion-label>
+    <ion-input [(ngModel)]="inputName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Product</ion-label>
+    <ion-input [(ngModel)]="inputProduct"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Remarks</ion-label>
+    <ion-textarea [(ngModel)]="inputRemarks"></ion-textarea>
+  </ion-item>
+  <button ion-button full (click)="add({name:inputName, product:inputProduct, remarks:inputRemarks})" block class="addButton">Save</button>
 </ion-content>

@@ -20,16 +20,31 @@
 <ion-content padding>
   <ion-list>
     <ion-grid>
-      <ion-item *ngFor="let md of mds" (click)="edit(md.key)" ion-long-press (onPressStart)="delete(md.key)">
-        <ion-row>
-          <ion-col>
-            {{md.name}}
-          </ion-col>
-          <ion-col>
-            {{md.specialty}}
-          </ion-col>
-        </ion-row>
-      </ion-item>
+      <ion-item-sliding *ngFor="let md of mds">
+        <ion-item text-wrap>
+          <ion-row>
+            <ion-col>
+              {{md.name}}
+            </ion-col>
+            <ion-col>
+              {{md.specialty}}
+            </ion-col>
+          </ion-row>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button icon-only color="secondary" (click)="sign(md.key)">
+            <ion-icon name="create"></ion-icon>
+          </button>
+          <button ion-button icon-only (click)="edit(md.key)">
+            <ion-icon name="settings"></ion-icon>
+          </button>
+        </ion-item-options>
+        <ion-item-options side="left">
+          <button ion-button icon-only color="danger" (click)="delete(md.key)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
     </ion-grid>
   </ion-list>
 </ion-content>

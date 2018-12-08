@@ -1,0 +1,26 @@
+<!--
+  Generated template for the AddAccountsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Add Accounts</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input [(ngModel)]="inputName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Starter Dose / Stock Donations</ion-label>
+      <ion-input [(ngModel)]="inputDose"></ion-input>
+    </ion-item>
+    <button ion-button full (click)="add({name:inputName, dose:inputDose})" block class="addButton">Save</button>
+  </ion-content>

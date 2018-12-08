@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as firebase from 'firebase';
 
 /**
- * Generated class for the AddMdPage page.
+ * Generated class for the AddAccountsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,24 +11,24 @@ import * as firebase from 'firebase';
 
 @IonicPage()
 @Component({
-  selector: 'page-add-md',
-  templateUrl: 'add-md.html',
+  selector: 'page-add-accounts',
+  templateUrl: 'add-accounts.html',
 })
-export class AddMdPage {
+export class AddAccountsPage {
 
-  ref = firebase.database().ref('mds/');
+  ref = firebase.database().ref('acs/');
   inputName:string = '';
-  inputSpecialty:string = '';
+  inputDose:string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  add(md) {
-    if (md !== undefined && md !== null) {
-      let newMd = this.ref.push();
-      newMd.set(md);
+  add(ac) {
+    if (ac !== undefined && ac !== null) {
+      let newAccount = this.ref.push();
+      newAccount.set(ac);
       this.inputName = '';
-      this.inputSpecialty = '';
+      this.inputDose = '';
     }
     this.navCtrl.pop();
   }

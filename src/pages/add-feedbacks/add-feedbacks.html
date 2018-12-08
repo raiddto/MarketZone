@@ -6,13 +6,17 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>addFeedbacksPage</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Add Highlights and Feedbacks</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
-</ion-content>
+    <ion-item>
+      <ion-label floating>Highlights and Feedbacks</ion-label>
+      <ion-textarea [(ngModel)]="inputFeedbacks"></ion-textarea>
+    </ion-item>
+    <button ion-button full (click)="add({feedbacks:inputFeedbacks})" block class="addButton">Save</button>
+  </ion-content>
