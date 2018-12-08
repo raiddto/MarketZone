@@ -18,12 +18,12 @@ import { AddAccountsPage } from '../add-accounts/add-accounts';
 })
 export class AccountsPage {
 
-  acs;
-  ref = firebase.database().ref('acs/');
+  accounts;
+  ref = firebase.database().ref('accounts/');
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
     this.ref.on('value', resp => {
-      this.acs = snapshotToArray(resp);
+      this.accounts = snapshotToArray(resp);
     });
   }
 
@@ -38,7 +38,7 @@ export class AccountsPage {
         {
           text: 'Yes',
           handler: data => {
-            firebase.database().ref('acs/'+key).remove();
+            firebase.database().ref('accounts/'+key).remove();
           }
         }, {
           text: 'No',
@@ -67,7 +67,7 @@ export class AccountsPage {
           text: 'Save',
           handler: data => {
             if (data.name !== undefined && data.name.length > 0) {
-              firebase.database().ref('acs/'+key).update({name:data.name, dose:data.dose});
+              firebase.database().ref('accounts/'+key).update({name:data.name, dose:data.dose});
             }
           }
         }, {

@@ -16,17 +16,17 @@ import * as firebase from 'firebase';
 })
 export class AddAccountsPage {
 
-  ref = firebase.database().ref('acs/');
+  ref = firebase.database().ref('accounts/');
   inputName:string = '';
   inputDose:string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  add(ac) {
-    if (ac !== undefined && ac !== null) {
+  add(account) {
+    if (account !== undefined && account !== null) {
       let newAccount = this.ref.push();
-      newAccount.set(ac);
+      newAccount.set(account);
       this.inputName = '';
       this.inputDose = '';
     }

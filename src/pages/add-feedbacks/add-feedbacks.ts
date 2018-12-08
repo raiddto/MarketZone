@@ -16,16 +16,16 @@ import * as firebase from 'firebase';
 })
 export class AddFeedbacksPage {
 
-  ref = firebase.database().ref('fbs/');
+  ref = firebase.database().ref('feedbacks/');
   inputFeedbacks:string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  add(fb) {
-    if (fb !== undefined && fb !== null) {
+  add(feedback) {
+    if (feedback !== undefined && feedback !== null) {
       let newFeedback = this.ref.push();
-      newFeedback.set(fb);
+      newFeedback.set(feedback);
       this.inputFeedbacks = '';
     }
     this.navCtrl.pop();

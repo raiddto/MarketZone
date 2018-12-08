@@ -18,12 +18,12 @@ import { AddDrugstorePage } from '../add-drugstore/add-drugstore';
 })
 export class DrugstorePage {
 
-  dss;
-  ref = firebase.database().ref('dss/');
+  drugstores;
+  ref = firebase.database().ref('drugstores/');
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
     this.ref.on('value', resp => {
-      this.dss = snapshotToArray(resp);
+      this.drugstores = snapshotToArray(resp);
     });
   }
 
@@ -38,7 +38,7 @@ export class DrugstorePage {
         {
           text: 'Yes',
           handler: data => {
-            firebase.database().ref('dss/'+key).remove();
+            firebase.database().ref('drugstores/'+key).remove();
           }
         }, {
           text: 'No',
@@ -71,7 +71,7 @@ export class DrugstorePage {
           text: 'Save',
           handler: data => {
             if (data.name !== undefined && data.name.length > 0) {
-              firebase.database().ref('dss/'+key).update({name:data.name, product:data.product, remarks:data.remarks});
+              firebase.database().ref('drugstores/'+key).update({name:data.name, product:data.product, remarks:data.remarks});
             }
           }
         }, {

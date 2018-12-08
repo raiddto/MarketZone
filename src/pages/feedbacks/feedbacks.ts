@@ -18,12 +18,12 @@ import { AddFeedbacksPage } from '../add-feedbacks/add-feedbacks';
 })
 export class FeedbacksPage {
 
-  fbs;
-  ref = firebase.database().ref('fbs/');
+  feedbacks;
+  ref = firebase.database().ref('feedbacks/');
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
     this.ref.on('value', resp => {
-      this.fbs = snapshotToArray(resp);
+      this.feedbacks = snapshotToArray(resp);
     });
   }
 
@@ -38,7 +38,7 @@ export class FeedbacksPage {
         {
           text: 'Yes',
           handler: data => {
-            firebase.database().ref('fbs/'+key).remove();
+            firebase.database().ref('feedbacks/'+key).remove();
           }
         }, {
           text: 'No',
@@ -63,7 +63,7 @@ export class FeedbacksPage {
           text: 'Save',
           handler: data => {
             if (data.feedbacks !== undefined && data.feedbacks.length > 0) {
-              firebase.database().ref('acs/'+key).update({feedbacks:data.feedbacks});
+              firebase.database().ref('feedbacks/'+key).update({feedbacks:data.feedbacks});
             }
           }
         }, {

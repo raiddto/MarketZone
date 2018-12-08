@@ -21,24 +21,24 @@
 <ion-content padding>
     <ion-list>
       <ion-grid>
-        <ion-item-sliding *ngFor="let ac of acs">
+        <ion-item-sliding *ngFor="let account of accounts">
           <ion-item text-wrap>
             <ion-row>
               <ion-col>
-                {{ac.name}}
+                {{account.name}}
               </ion-col>
               <ion-col>
-                {{ac.dose}}
+                {{account.dose}}
               </ion-col>
             </ion-row>
           </ion-item>
           <ion-item-options side="right">
-            <button ion-button icon-only (click)="edit(ac.key)">
+            <button ion-button icon-only (click)="edit(account.key)">
               <ion-icon name="settings"></ion-icon>
             </button>
           </ion-item-options>
           <ion-item-options side="left">
-            <button ion-button icon-only color="danger" (click)="delete(ac.key)">
+            <button ion-button icon-only color="danger" (click)="delete(account.key)">
               <ion-icon name="trash"></ion-icon>
             </button>
           </ion-item-options>

@@ -16,7 +16,7 @@ import * as firebase from 'firebase';
 })
 export class AddDrugstorePage {
 
-  ref = firebase.database().ref('dss/');
+  ref = firebase.database().ref('drugstores/');
   inputName:string = '';
   inputProduct:string = '';
   inputRemarks:string = '';
@@ -24,10 +24,10 @@ export class AddDrugstorePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  add(ds) {
-    if (ds !== undefined && ds !== null) {
+  add(drugstore) {
+    if (drugstore !== undefined && drugstore !== null) {
       let newDrugstore = this.ref.push();
-      newDrugstore.set(ds);
+      newDrugstore.set(drugstore);
       this.inputName = '';
       this.inputProduct = '';
       this.inputRemarks = '';

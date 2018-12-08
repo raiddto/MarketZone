@@ -21,21 +21,21 @@
 <ion-content padding>
     <ion-list>
       <ion-grid>
-        <ion-item-sliding *ngFor="let fb of fbs">
+        <ion-item-sliding *ngFor="let feedback of feedbacks">
           <ion-item text-wrap>
             <ion-row>
               <ion-col>
-                {{fb.feedbacks}}
+                {{feedback.feedbacks}}
               </ion-col>
             </ion-row>
           </ion-item>
           <ion-item-options side="right">
-            <button ion-button icon-only (click)="edit(fb.key)">
+            <button ion-button icon-only (click)="edit(feedback.key)">
               <ion-icon name="settings"></ion-icon>
             </button>
           </ion-item-options>
           <ion-item-options side="left">
-            <button ion-button icon-only color="danger" (click)="delete(fb.key)">
+            <button ion-button icon-only color="danger" (click)="delete(feedback.key)">
               <ion-icon name="trash"></ion-icon>
             </button>
           </ion-item-options>

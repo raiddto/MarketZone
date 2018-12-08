@@ -21,27 +21,27 @@
 <ion-content padding>
   <ion-list>
     <ion-grid>
-      <ion-item-sliding *ngFor="let ds of dss">
+      <ion-item-sliding *ngFor="let drugstore of drugstores">
         <ion-item text-wrap>
           <ion-row>
             <ion-col>
-              {{ds.name}}
+              {{drugstore.name}}
             </ion-col>
             <ion-col>
-              {{ds.product}}
+              {{drugstore.product}}
             </ion-col>
             <ion-col>
-              {{ds.remarks}}
+              {{drugstore.remarks}}
             </ion-col>
           </ion-row>
         </ion-item>
         <ion-item-options side="right">
-          <button ion-button icon-only (click)="edit(ds.key)">
+          <button ion-button icon-only (click)="edit(drugstore.key)">
             <ion-icon name="settings"></ion-icon>
           </button>
         </ion-item-options>
         <ion-item-options side="left">
-          <button ion-button icon-only color="danger" (click)="delete(ds.key)">
+          <button ion-button icon-only color="danger" (click)="delete(drugstore.key)">
             <ion-icon name="trash"></ion-icon>
           </button>
         </ion-item-options>
