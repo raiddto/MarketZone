@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import * as firebase from 'firebase';
 import { snapshotToArray } from '../../app/environment';
 import { AddMdPage } from '../add-md/add-md';
+import { SignPage } from '../sign/sign';
 
 /**
  * Generated class for the MdPage page.
@@ -20,11 +21,13 @@ export class MdPage {
 
   mds;
   ref = firebase.database().ref('mds/');
+  signatureImage : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
     this.ref.on('value', resp => {
       this.mds = snapshotToArray(resp);
     });
+    this.signatureImage = navParams.get('signatureImage');
   }
 
   add() {
@@ -80,7 +83,7 @@ export class MdPage {
   }
 
   sign(key) {
-    this.navCtrl.push('SignPage');
+    this.navCtrl.push(SignPage, {signKey:key});
   }
 
 }

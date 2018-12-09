@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+import * as firebase from 'firebase';
 
 /**
  * Generated class for the SignPage page.
@@ -8,18 +10,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-sign',
   templateUrl: 'sign.html',
 })
 export class SignPage {
+  @ViewChild(SignaturePad) signaturePad: SignaturePad;
+
+  public signaturePadOptions : Object = {
+    'minWidth': 2,
+    'canvasWidth': 340,
+    'canvasHeight': 200
+  };
+
+  signatureImage : string;
+  signKey:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.signKey = navParams.get('signKey');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignPage');
+  save() {
+    this.signatureImage = this.signaturePad.toDataURL();
+    firebase.database().ref('mds/'+this.signKey).update({sign:this.signatureImage});
+    this.navCtrl.setRoot('MdPage', {signatureImage: this.signatureImage});
+  }
+
+  clear() {
+    this.signaturePad.clear();
   }
 
 }

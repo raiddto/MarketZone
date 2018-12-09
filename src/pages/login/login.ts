@@ -22,7 +22,7 @@ export class LoginPage {
   }
 
   async login(user: User) {
-    // this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+    this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
     this.navCtrl.setRoot('TabsPage');
   }
 

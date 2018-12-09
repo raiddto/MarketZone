@@ -17,11 +17,14 @@
   <ion-list-header>
     <ion-grid>
       <ion-row>
-          <ion-col>
+          <ion-col col-5>
             M D NAME
           </ion-col>
-          <ion-col>
+          <ion-col col-4>
             SPECIALTY
+          </ion-col>
+          <ion-col col-2>
+            SIGNATURE
           </ion-col>
       </ion-row>
     </ion-grid>
@@ -34,20 +37,23 @@
       <ion-item-sliding *ngFor="let md of mds">
         <ion-item text-wrap>
           <ion-row>
-            <ion-col>
+            <ion-col col-6>
               {{md.name}}
             </ion-col>
-            <ion-col>
+            <ion-col col-4>
               {{md.specialty}}
+            </ion-col>
+            <ion-col>
+              <img [src]="md.sign" *ngIf="md.sign"/>
             </ion-col>
           </ion-row>
         </ion-item>
         <ion-item-options side="right">
-          <button ion-button icon-only color="secondary" (click)="sign(md.key)">
-            <ion-icon name="create"></ion-icon>
-          </button>
           <button ion-button icon-only (click)="edit(md.key)">
             <ion-icon name="settings"></ion-icon>
+          </button>
+          <button ion-button icon-only color="secondary" (click)="sign(md.key)">
+            <ion-icon name="create"></ion-icon>
           </button>
         </ion-item-options>
         <ion-item-options side="left">

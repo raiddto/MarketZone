@@ -7,8 +7,13 @@ ion-grid, ion-row {
 }
 
 ion-img {
-    height: 225px;
-    margin-left: 10px;
+    height: 150px;
     display: block;
     background: none;
 }
+
+img {
+    width: auto;
+    margin: auto;
+    display: block;
+  }

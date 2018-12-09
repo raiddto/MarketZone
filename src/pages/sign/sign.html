@@ -14,5 +14,15 @@
 
 
 <ion-content padding>
-
+  <signature-pad [options]="signaturePadOptions"  id="signatureCanvas"></signature-pad>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button full color="light" (click)="clear()">Clear</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button full color="primary" (click)="save()">Save</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -17,8 +17,9 @@ import * as firebase from 'firebase';
 export class AddMdPage {
 
   ref = firebase.database().ref('mds/');
-  inputName:string = '';
-  inputSpecialty:string = '';
+  inputName:string;
+  inputSpecialty:string;
+  inputSign = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -26,7 +27,11 @@ export class AddMdPage {
   add(md) {
     if (md !== undefined && md !== null) {
       let newMd = this.ref.push();
-      newMd.set(md);
+      newMd.set({
+        name:this.inputName,
+        specialty:this.inputSpecialty,
+        sign:this.inputSign
+      });
       this.inputName = '';
       this.inputSpecialty = '';
     }

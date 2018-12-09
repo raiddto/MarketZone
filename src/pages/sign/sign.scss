@@ -1,3 +1,9 @@
 page-sign {
-
+    signature-pad {
+        canvas {
+            margin-top: 5%;
+            border: dashed 1px #cccccc;
+            width: 100%; height: 200px;
+        }
+    }
 }
